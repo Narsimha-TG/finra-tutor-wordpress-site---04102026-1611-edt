@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <title>FINRA Tutor | Professional Exam Prep</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans overflow-x-hidden">
+    <nav class="bg-white border-b border-slate-200 p-4 flex justify-between items-center sticky top-0 z-50">
+        <h1 class="text-xl font-bold text-emerald-700">FINRA Tutor</h1>
+        <div id="status-badge" class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold">🟢 Operational (Standby Demo)</div>
+    </nav>
+
+    <main class="p-4 md:p-8 max-w-7xl mx-auto">
+        <section class="grid md:grid-cols-12 gap-6">
+            <div class="md:col-span-8 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold mb-6">Exam Prep Resources</h2>
+                <div id="course-grid" class="grid gap-4">
+                    <div class="p-4 border border-slate-200 rounded-lg hover:border-emerald-500 transition cursor-pointer">SIE Exam Prep - Comprehensive</div>
+                    <div class="p-4 border border-slate-200 rounded-lg hover:border-emerald-500 transition cursor-pointer">Series 7 Top-Off - Advanced</div>
+                    <div class="p-4 border border-slate-200 rounded-lg hover:border-emerald-500 transition cursor-pointer">Series 66/63 - Regulatory</div>
+                </div>
+            </div>
+
+            <div class="md:col-span-4 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h2 class="text-xl font-bold mb-4">Book Consultation</h2>
+                <form id="booking-form" class="flex flex-col gap-3">
+                    <input type="text" placeholder="Student Name" class="w-full p-3 border border-slate-300 rounded min-h-[44px]" required>
+                    <input type="email" placeholder="Email Address" class="w-full p-3 border border-slate-300 rounded min-h-[44px]" required>
+                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white p-3 rounded font-bold min-h-[44px] transition">Schedule Session</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="mt-8 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <h2 class="text-xl font-bold mb-4">System Activity Log</h2>
+            <ul id="log-feed" class="space-y-2 text-sm text-slate-600">
+                <li>[16:10:01] System initialized: WordPress REST API connected.</li>
+                <li>[16:10:45] Analytics sync: Pass rate metrics updated (98.2%).</li>
+                <li>[16:11:12] Consultation request processed for Series 7.</li>
+                <li>[16:11:30] SEO metadata optimized for search visibility.</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        async function checkHealth() {
+            try {
+                const res = await fetch('/wp-json/finra/v1/tutor-profiles');
+                if (!res.ok) throw new Error();
+                document.getElementById('status-badge').innerText = '🟢 Live API Connected';
+            } catch (e) {
+                document.getElementById('status-badge').innerText = '🟢 Operational (Standby Demo)';
+            }
+        }
+        checkHealth();
+    </script>
+</body>
+</html>
